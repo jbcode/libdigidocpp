@@ -38,6 +38,7 @@ env:
   - secure: VTpLjRFkVZeqSiP/tea7b5WiMU+PjQJlpny8/QEYazRNhn/uie69aT8VvEdkpsUM1AEx8yPnNmVGShvoNNaOi/AoqynTIKgeGPCj44h6lCnPpByGVur0avc5WrRj2xBbPBBUw1rsL65wZ13MufmRLUwnmmVYQZ3qDBdpgZvCEhA=
 
 before_install: if [ "${TRAVIS_OS_NAME}" = "osx" ]; then
+    rvm get head;
     brew install swig;
     HASH=($(shasum prepare_osx_build_environment.sh));
     pip install --user awscli > /dev/null;
@@ -78,8 +79,8 @@ script: case ${TARGET} in
 addons:
   coverity_scan:
     project:
-      name: open-eid/libdigidocpp
-    notification_email: raul@metsma.ee
+      name: jbcode/libdigidocpp
+    notification_email: juozas.bitkevicius@gmail.com.ee
     build_command_prepend: mkdir coverity; cd coverity; cmake ..
     build_command: make
     branch_pattern: coverity_scan
