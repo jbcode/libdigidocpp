@@ -79,10 +79,8 @@ before_deploy:
 - tar czf libdigidocpp-${VERSION}.tar.gz --exclude-vcs libdigidocpp-${VERSION}
 deploy:
   provider: releases
-  api_key:
-    secure: CXl5yp2RQ1VpUWU3j8hsTrQ38TwShaUSIQoAAfHjEdMZvk5GAR0JFzrswpE2AWOEEDHsQV+66DHydqAnv4fYQlAZdXSc44PlNiIC3LV15sVdtoLLZhFBM/UWxDJ1tPMeU654d/SUeXWLd3CMHMrbOEyUA+ymUR1icmc8xHNGqpo=
+  api_key: 4ea95b8e0ecc0dad29b76830ebe0b9a189c3463b
   file: libdigidocpp-${VERSION}.tar.gz
   skip_cleanup: true
   on:
     tags: true
-    condition: "$TRAVIS_OS_NAME = linux"
