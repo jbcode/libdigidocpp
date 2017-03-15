@@ -1,22 +1,22 @@
 language: c++
 matrix:
   include:
-  - os: linux
-    env: TARGET=ubuntu:16.04
-    sudo: false
-  - os: linux
-    env: TARGET=ubuntu:16.10
-    sudo: false
-  - os: linux
-    env: TARGET=32bit/ubuntu:16.04
-    sudo: false
-  - os: osx
-    env: TARGET=osx
-    osx_image: xcode7.3
-  - os: osx
-    env: TARGET=ios
-  - os: osx
-    env: TARGET=simulator
+#  - os: linux
+#    env: TARGET=ubuntu:16.04
+#    sudo: false
+#  - os: linux
+#    env: TARGET=ubuntu:16.10
+#    sudo: false
+#  - os: linux
+#    env: TARGET=32bit/ubuntu:16.04
+#    sudo: false
+#  - os: osx
+#    env: TARGET=osx
+#    osx_image: xcode7.3
+#  - os: osx
+#    env: TARGET=ios
+#  - os: osx
+#    env: TARGET=simulator
   - os: osx
     env: TARGET=androidarm
   - os: osx
