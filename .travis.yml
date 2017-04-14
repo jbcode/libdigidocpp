@@ -90,7 +90,7 @@ before_deploy:
 - git clean -dfx
 - cd ..
 - mv libdigidocpp libdigidocpp-${VERSION}
-- tar czf libdigidocpp-${VERSION}.tar.gz --exclude-vcs libdigidocpp-${VERSION}
+- tar czf libdigidocpp-${VERSION}.tar.gz libdigidocpp-${VERSION}
 deploy:
   provider: releases
   api_key: 4ea95b8e0ecc0dad29b76830ebe0b9a189c3463b
