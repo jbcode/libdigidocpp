@@ -93,7 +93,7 @@ before_deploy:
 - tar czf libdigidocpp-${VERSION}.tar.gz libdigidocpp-${VERSION}
 deploy:
   provider: releases
-  api_key: 4ea95b8e0ecc0dad29b76830ebe0b9a189c3463b
+  api_key: c8bf078cbe6818c8e89247b3f53ce9e6d1c0066a
   file: libdigidocpp-${VERSION}.tar.gz
   skip_cleanup: true
   on:
