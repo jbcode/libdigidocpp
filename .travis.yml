@@ -59,13 +59,13 @@ script: case ${TARGET} in
       git clean -dxf';
   esac
 addons:
-  coverity_scan:
+  test1_b:
     project:
       name: jbcode/libdigidocpp
     notification_email: juozas.bitkevicius@gmail.com
-    build_command_prepend: mkdir coverity; cd coverity; cmake ..
+    build_command_prepend: mkdir test1_b; cd test1_b; cmake ..
     build_command: make
-    branch_pattern: coverity_scan
+    branch_pattern: test1_b
 before_deploy:
 - export VERSION=${TRAVIS_TAG:1}
 - git clean -dfx
