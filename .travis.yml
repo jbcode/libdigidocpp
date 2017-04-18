@@ -80,3 +80,5 @@ deploy:
   skip_cleanup: true
   on:
     repo: jbcode/libdigidocpp
+    tags: true
+    all_branches: true
