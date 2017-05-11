@@ -35,6 +35,11 @@ before_install: if [ "${TRAVIS_OS_NAME}" = "osx" ]; then
       fi
     fi
   fi
+  if [ "${TARGET}" = "ios" ]; then
+    export TARGET_2="iphoneos"
+  else
+    export TARGET_2=${TARGET}
+  fi
 script: case ${TARGET} in
   *ios*|*simulator*)
     cd examples/libdigidocpp-ios && ./build-library.sh ${TARGET} && cd ../..;
@@ -70,12 +75,6 @@ before_deploy:
 - git clean -dfx
 - cd ..
 - mv libdigidocpp libdigidocpp-${VERSION}
-- if [ "${TARGET}" = "ios" ]; then
-    export TARGET_2="iphoneos"
-  elif
-    export TARGET_2=${TARGET}
-  fi
-
 - tar czf libdigidocpp-${VERSION}-${TARGET_2}.tar.gz libdigidocpp-${VERSION} /Library/EstonianIDCard.${TARGET_2}
 deploy:
   provider: releases
