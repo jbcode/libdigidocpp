@@ -7,7 +7,7 @@ matrix:
     env: TARGET=androidarm
 sudo: required
 dist: trusty
-osx_image: xcode8.3
+osx_image: xcode8.2
 services:
 - docker
 cache:
