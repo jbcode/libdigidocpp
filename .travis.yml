@@ -77,7 +77,7 @@ before_deploy:
 - git clean -dfx
 - cd ..
 - mv libdigidocpp libdigidocpp-${VERSION}
-- tar czf libdigidocpp-${VERSION}-${TARGETTT}.tar.gz libdigidocpp-${VERSION} /Library/EstonianIDCard.TARGETTT
+- tar czf libdigidocpp-${VERSION}-${TARGETTT}.tar.gz libdigidocpp-${VERSION} /Library/EstonianIDCard.${TARGETTT}
 deploy:
   provider: releases
   api_key:
