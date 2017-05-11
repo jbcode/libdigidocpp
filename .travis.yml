@@ -36,9 +36,9 @@ before_install: if [ "${TRAVIS_OS_NAME}" = "osx" ]; then
     fi
   fi
   if [ "${TARGET}" = "ios" ]; then
-    export TARGET_2="iphoneos"
+    export TARGET_2="iphoneos";
   else
-    export TARGET_2=${TARGET}
+    export TARGET_2=${TARGET};
   fi
 script: case ${TARGET} in
   *ios*|*simulator*)
