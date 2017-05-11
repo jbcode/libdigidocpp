@@ -61,7 +61,7 @@ addons:
     project:
       name: jbcode/libdigidocpp
     notification_email: juozas.bitkevicius@gmail.com
-    build_command_prepend: mkdir coverity; cd coverity; cmake ..
+    build_command_prepend: mkdir coverity_scan; cd coverity_scan; cmake ..
     build_command: make
     branch_pattern: coverity_scan
 before_deploy:
@@ -69,11 +69,14 @@ before_deploy:
 - git clean -dfx
 - cd ..
 - mv libdigidocpp libdigidocpp-${VERSION}
-- tar czf libdigidocpp-${VERSION}.tar.gz libdigidocpp-${VERSION}
+- tar czf libdigidocpp-${VERSION}-${TARGET}.tar.gz libdigidocpp-${VERSION} /Library/EstonianIDCard.${TARGET}
 deploy:
   provider: releases
   api_key:
     secure: cdIEyrX4J/3GtHLj+1fGXXstklVk/UiubbgQmyuuI/VV38zWSFd9pw1/1DCm+DVIvog57ymmL4xVJQFitqSroEcRGXOyPm9I2oQ4b/MEA74eij0MuG54fAHLp7gGS/qUhYBp8NxHYoedQM4hhaKgSwA1T20TH8wfIu6KUXpCWzR/6CGTnQjPRXnnNcd3xAdacBYF0i7Z8QxnL/YlCdITAZtQyNveUYBA2z7Vqq9VTxfzWfYu1q6sukkXzc/hlHQoTGjZU1EnZifBMK+pMNIQOTsb1wdVkHJCEUVqN5DqI3j/YSY5AnOkGjCwPsUWcOrW7BPMBoeT8S2NqN1EESR8dW9VfQgzaNoFdzTaL7Yo7fl4iJvoHaf5uJOgZ1zsKXI/w7pMmgDs4W4bFRfqtha6Fz0YjFtCHTUZhTUWCvLU2gKCCTUSxpWoGlGKg2V1UH7XOIvz8eFRQKzqLryDGIojkXaqwBjlOJhVYcguO0fcFjTqpm1yAbJM4FwuNSU80H755lWA1IsKFQGZ3PaQjK3YGFP8zSiZKtOK44NtgpRvwcpcbJX8IkZ/eL3N4XE4X2nDltqxyUTfqe9iOUEiqBb461sYVuv5XLrn0cKDqQn336r0ESUj5mVQO5RVUT2ZFDjXVBaJMtotwkV07WJqOm2t8u2wJNYFC7ukPn4V8HiKtVs=
-  file: test.zip
+  file: libdigidocpp-${VERSION}-${TARGET}.tar.gz
+  skip_cleanup: true
   on:
     repo: jbcode/libdigidocpp
+    tags: true
+    all_branches: true
