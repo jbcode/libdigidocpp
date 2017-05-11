@@ -70,7 +70,7 @@ before_deploy:
 - git clean -dfx
 - cd ..
 - mv libdigidocpp libdigidocpp-${VERSION}
-  if [ "${TARGET}" = "ios" ]; then
+- if [ "${TARGET}" = "ios" ]; then
     export TARGET_2="iphoneos"
   elif
     export TARGET_2=${TARGET}
