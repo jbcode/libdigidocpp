@@ -20,7 +20,6 @@ env:
   - AWS_DEFAULT_REGION=eu-west-1
   - secure: Vo6CdadGO1qR9D5ax+ZWiw+ztGk6MAsqbqBhS4iuLX+NgKqynWygJlFKErRldpJ2fvVS2oAlO348GuZ54PGNaRU9H1hokKd4VgQtBdqXkkkJH9TkP/JxK27owCt/ZQcSr1/+2LAFLzKMWOsEnnSXojzrVH37lALuOMS6YQ9UfpF3KxYdbaWFsuWc0GF5TADwFSDwGssb/FKb6jIjjU9EcfFbvEPY5v6GkYaum2Zsp8ZpwVX6JqjuSS9+azvJAIsRabM1Vd7uubSYhQtYejuYE2wAFPcx8T460JzdVbMBfjnqxQnWg2eBghAP+CwIEG748kJ1Rtm1gY5X2d5KGK0zZsWIotzaeIHiQroldVQcam+xQ+hXDJOeIk18W02ezg8I6oqySWYamrW253i51vTRtrjxACcZw3hAfPqQCkX6mV7gm05z+7LEFAZIFcezAi8XzmkzdrbGC5jkVnLb3rfHoww6+3udMUUx8vfIMWz2aa/jioyBR0NGHxhB9PEr9KfjjvwwljGC71bmoH6Ik18ttm68NQxlotA3naPOPOFh4lJJh3q9cvc8xid50YWirN0DGpFEi1pq/y4QouMzC3RmWaG2XiCvkRhKDNjt83qYNO+LEF1mydGvFQt+AIJUQ0FGlnilx/Hmjr5182/kWlZF/necI8zfW2mTaf0hU5abkLw=
 before_install: 
-  ls /Library/EstonianIDCard*;
   if [ "${TARGET}" = "ios" ]; then
     TARGETTT="iphoneos";
   else
@@ -61,7 +60,7 @@ before_deploy:
 - git clean -dfx
 - cd ..
 - mv libdigidocpp libdigidocpp-${VERSION}
-- tar czf libdigidocpp-${VERSION}-${TARGETTT}.tar.gz libdigidocpp-${VERSION} /Library/EstonianIDCard.${TARGETTT}
+- tar czf libdigidocpp-${VERSION}-${TARGETTT}.tar.gz libdigidocpp-${VERSION} /Library/EstonianIDCard.*
 deploy:
   provider: releases
   api_key:
