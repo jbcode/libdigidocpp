@@ -430,7 +430,7 @@ void OCSP::verifyResponse(const X509Cert &cert) const
     //OCSP_NOCHECKS - cancel futurer responder issuer checks and trust bits
     //OCSP_NOEXPLICIT - returns 0 by mistake
     //all checks enabled fails trust bit check, cant use OCSP_NOEXPLICIT instead using OCSP_NOCHECKS
-    int result = OCSP_basic_verify(basic.get(), stack, store.get(), OCSP_NOCHECKS);
+    int result = OCSP_basic_verify(basic.get(), stack, store.get(), OCSP_NOSIGS);
     sk_X509_free(stack);
     if(result <= 0)
         THROW_OPENSSLEXCEPTION("Failed to verify OCSP response.");
