@@ -1177,7 +1177,7 @@ string SignatureXAdES_B::claimedSigningTime() const
     return util::date::xsd2string(sigTimeOpt.get());
 }
 
-vector<X509Cert::KeyUsage> SignatureXAdES_B::signingCertificates() const
+vector<X509Cert> SignatureXAdES_B::signingCertificates() const
 {
     const SignatureType::KeyInfoOptional& keyInfoOptional = signature->keyInfo();
     if(!keyInfoOptional.present())
@@ -1189,7 +1189,28 @@ vector<X509Cert::KeyUsage> SignatureXAdES_B::signingCertificates() const
     else if(x509DataSeq.size() != 1)
         THROW("Signature contains more than one signers certificate");
 
-    return x509CertSeq;
+    vector<X509Cert> certs;
+
+    for (const X509DataType::X509CertificateSequence& x509CertSeq : x509DataSeq) {
+      if(x509CertSeq.empty())
+        continue;
+          //THROW("Signature does not contain signer certificate");
+  //    else if(x509CertSeq.size() != 1)
+  //        THROW("Signature contains more than one signers certificate");
+      try
+      {
+        for (const X509DataType::X509CertificateType& data : x509CertSeq) {
+           certs.push_back(X509Cert((const unsigned char*)data.data(), data.size()));
+        }
+      }
+      catch(const Exception &e)
+      {
+          continue;
+      }
+    }
+
+
+    return certs;
 }
 
 X509Cert SignatureXAdES_B::signingCertificate() const
