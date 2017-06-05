@@ -51,6 +51,7 @@ namespace digidoc
           std::string claimedSigningTime() const override;
           virtual std::string trustedSigningTime() const override;
           X509Cert signingCertificate() const override;
+          std::vector<X509Cert> signingCertificates() const;
           std::string signatureMethod() const override;
           void validate() const override final;
           virtual void validate(const std::string &policy) const override;

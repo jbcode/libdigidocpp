@@ -1189,9 +1189,10 @@ vector<X509Cert> SignatureXAdES_B::signingCertificates() const
     else if(x509DataSeq.size() != 1)
         THROW("Signature contains more than one signers certificate");
 
-    vector<X509Cert> certs;
+    std::vector<X509Cert> certs;
 
-    for (const X509DataType::X509CertificateSequence& x509CertSeq : x509DataSeq) {
+    for (const X509DataType& x509CertDataType : x509DataSeq) {
+      const X509DataType::X509CertificateSequence& x509CertSeq = x509CertDataType.x509Certificate();
       if(x509CertSeq.empty())
         continue;
           //THROW("Signature does not contain signer certificate");
