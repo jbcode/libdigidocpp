@@ -1189,7 +1189,7 @@ X509Cert SignatureXAdES_B::signingCertificate() const
     else if(x509DataSeq.size() != 1)
         THROW("Signature contains more than one signers certificate");
 
-    const X509DataType::X509CertificateSequence& x509CertSeq = x509DataSeq.front().x509Certificate();
+    const X509DataType::X509CertificateSequence& x509CertSeq = x509DataSeq.back().x509Certificate();
     if(x509CertSeq.empty())
         THROW("Signature does not contain signer certificate");
 //    else if(x509CertSeq.size() != 1)
