@@ -1177,6 +1177,21 @@ string SignatureXAdES_B::claimedSigningTime() const
     return util::date::xsd2string(sigTimeOpt.get());
 }
 
+vector<X509Cert::KeyUsage> SignatureXAdES_B::signingCertificates() const
+{
+    const SignatureType::KeyInfoOptional& keyInfoOptional = signature->keyInfo();
+    if(!keyInfoOptional.present())
+        THROW("Signature does not contain signer certificate");
+
+    const KeyInfoType::X509DataSequence& x509DataSeq = keyInfoOptional->x509Data();
+    if ( x509DataSeq.empty() )
+        THROW("Signature does not contain signer certificate");
+    else if(x509DataSeq.size() != 1)
+        THROW("Signature contains more than one signers certificate");
+
+    return x509CertSeq;
+}
+
 X509Cert SignatureXAdES_B::signingCertificate() const
 {
     const SignatureType::KeyInfoOptional& keyInfoOptional = signature->keyInfo();
