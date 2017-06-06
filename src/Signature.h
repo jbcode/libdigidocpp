@@ -40,6 +40,7 @@ namespace digidoc
           virtual std::string claimedSigningTime() const = 0;
           virtual std::string trustedSigningTime() const = 0;
           virtual X509Cert signingCertificate() const = 0;
+          virtual std::vector<X509Cert> signingCertificates() const = 0;
           virtual std::string signatureMethod() const = 0;
           virtual void validate() const = 0;
           virtual std::vector<unsigned char> dataToSign() const = 0;
