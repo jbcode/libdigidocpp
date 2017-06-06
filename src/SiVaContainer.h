@@ -35,6 +35,7 @@ public:
     std::string claimedSigningTime() const override { return _signingTime; }
     std::string trustedSigningTime() const override { return _bestTime.empty() ? _signingTime : _bestTime; }
     X509Cert signingCertificate() const override { return X509Cert(); }
+    std::vector<X509Cert> signingCertificates() const override;
     std::string signedBy() const override { return _signedBy; }
     std::string signatureMethod() const override { return std::string(); }
     void validate() const override;
