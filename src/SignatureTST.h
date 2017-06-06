@@ -42,6 +42,7 @@ public:
     std::string id() const override;
     std::string claimedSigningTime() const override;
     X509Cert signingCertificate() const override;
+    std::vector<X509Cert> signingCertificates() override;
     std::string signatureMethod() const override;
     void validate() const override;
     std::vector<unsigned char> dataToSign() const override;
