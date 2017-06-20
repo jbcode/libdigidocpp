@@ -5,6 +5,8 @@ matrix:
     env: TARGET=ios
   - os: osx
     env: TARGET=androidarm
+  - os: osx
+    env: TARGET=androidarm64
 sudo: required
 dist: trusty
 osx_image: xcode8.2
